@@ -1,0 +1,19 @@
+{
+  "name": "desafio-backend-node-petland",
+  "version": "1.0.0",
+  "description": "O objetivo do exercício é verificar sua familiaridade com Nodejs, lógica e organização do código",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturGC/desafio-backend-node-petland.git"
+  },
+  "author": "arturgc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturGC/desafio-backend-node-petland/issues"
+  },
+  "homepage": "https://github.com/ArturGC/desafio-backend-node-petland#readme"
+}
