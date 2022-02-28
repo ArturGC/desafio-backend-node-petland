@@ -1,8 +1,18 @@
 "use strict";
 
 const axios = require("axios");
+const { obterHorariosAgendados } = require("./utils/horarios-agendados");
+const { obterHorariosAgendamento } = require("./utils/horarios-agendamentos");
+const {
+  filtrarHorariosDisponiveis,
+  mesclarArraysHorariosDisponiveis,
+} = require("./utils/utils");
 
-module.exports = { consultarAgendamentosProfissional, consultarProfissionais };
+module.exports = {
+  consultarAgendamentosProfissional,
+  consultarProfissionais,
+  obterHorariosDisponiveis,
+};
 
 async function consultarProfissionais() {
   const response = await getRequest(
@@ -36,4 +46,34 @@ async function consultarAgendamentosProfissional(profissionaolId) {
 
 async function getRequest(url) {
   return axios.get(url);
+}
+
+async function obterHorariosDisponiveisProfissional(startsAt, finishesAt, id) {
+  const horariosPossiveis = obterHorariosAgendamento(startsAt, finishesAt);
+
+  const appointments = await consultarAgendamentosProfissional(id);
+  const horariosAgendados = obterHorariosAgendados(appointments);
+
+  const horariosDisponiveisProfissional = filtrarHorariosDisponiveis(
+    horariosPossiveis,
+    horariosAgendados
+  );
+
+  return horariosDisponiveisProfissional;
+}
+
+async function obterHorariosDisponiveis() {
+  const profissionais = await consultarProfissionais();
+
+  const arrayHorariosDisponiveis = await Promise.all(
+    profissionais.map(async ({ startsAt, finishesAt, id }) =>
+      obterHorariosDisponiveisProfissional(startsAt, finishesAt, id)
+    )
+  );
+
+  const horariosDisponiveis = mesclarArraysHorariosDisponiveis(
+    arrayHorariosDisponiveis
+  );
+
+  return { availableTimes: horariosDisponiveis };
 }
