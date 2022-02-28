@@ -36,7 +36,7 @@ function obterHorariosEntreInicioETermino(horarioInicioObj, horarioTerminoObj) {
   const quantidadeDeHorarios =
     (dataHoraTermino - dataHoraInicio) / invervaloEmMilisegundos;
 
-  return Array.from({ length: quantidadeDeHorarios + 1 }).map((_, index) => {
+  return Array.from({ length: quantidadeDeHorarios }).map((_, index) => {
     const horario = new Date(
       dataHoraInicio.getTime() + index * invervaloEmMilisegundos
     );

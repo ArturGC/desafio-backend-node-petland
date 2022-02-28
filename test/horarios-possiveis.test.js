@@ -76,7 +76,6 @@ describe("obterHorariosPossiveis: Deve gerar um array com os horários possívei
       "09:30",
       "10:00",
       "10:30",
-      "11:00",
     ]);
   });
 });

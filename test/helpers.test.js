@@ -34,7 +34,7 @@ test("obterHorariosEntreInicioETermino: Deve gerar um array com horários em int
     horarioTerminoObj
   );
 
-  expect(horarios).toEqual(["08:00", "08:30", "09:00", "09:30", "10:00"]);
+  expect(horarios).toEqual(["08:00", "08:30", "09:00", "09:30"]);
 });
 
 test("filtrarHorariosDisponiveis: Deve filtrar do array de horários possíveis os valores do array de horários agendados", () => {

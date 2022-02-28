@@ -74,13 +74,5 @@ describe("obterHorariosAgendados: Deve gerar um array com os horários de agenda
   ];
   const horariosAgendados = obterHorariosAgendados(agendamentos);
 
-  expect(horariosAgendados).toEqual([
-    "09:30",
-    "10:00",
-    "10:30",
-    "11:00",
-    "11:30",
-    "16:00",
-    "16:30",
-  ]);
+  expect(horariosAgendados).toEqual(["09:30", "10:00", "11:00", "16:00"]);
 });

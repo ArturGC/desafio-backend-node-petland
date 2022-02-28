@@ -4,7 +4,6 @@ const express = require("express");
 
 const { obterHorariosDisponiveis } = require("./services");
 
-const port = 3000;
 const app = express();
 
 app.get("/", async (req, res) => {
@@ -13,11 +12,8 @@ app.get("/", async (req, res) => {
 
     res.send(availableTimes);
   } catch (error) {
-    res.render("404", {
-      title: "404",
-      message: error.message,
-    });
+    res.status(404).send({ message: error.message });
   }
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}`));
+module.exports = app;
