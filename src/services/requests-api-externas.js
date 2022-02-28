@@ -8,7 +8,7 @@ module.exports = {
 };
 
 async function consultarProfissionais() {
-  const response = await getRequest(
+  const response = await axios.get(
     "https://api-homolog.geracaopet.com.br/api/challenges/challenge1/employees"
   );
 
@@ -31,8 +31,4 @@ async function consultarAgendamentosProfissional(profissionaolId) {
   }
 
   return response.data.appointments;
-}
-
-async function getRequest(url) {
-  return axios.get(url);
 }
