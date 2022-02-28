@@ -67,31 +67,20 @@ describe("normalizarHorarioTerminoAgendados: Deve arredondar um horário para o 
 });
 
 describe("obterHorariosAgendados: Deve gerar um array com os horários de agendamento quando é fornecido as string de horário de início e horário de término", () => {
-  test("Inicio: 08:00, Termino: 10:00 => ['08:00', '08:30', '09:00', '09:30']", () => {
-    const agendamentos = [
-      {
-        startsAt: "09:30",
-        finishesAt: "10:30",
-      },
-      {
-        startsAt: "11:00",
-        finishesAt: "11:20",
-      },
-      {
-        startsAt: "16:00",
-        finishesAt: "16:30",
-      },
-    ];
-    const horariosAgendados = obterHorariosAgendados(agendamentos);
+  const agendamentos = [
+    { startsAt: "09:30", finishesAt: "10:30" },
+    { startsAt: "11:00", finishesAt: "11:20" },
+    { startsAt: "16:00", finishesAt: "16:30" },
+  ];
+  const horariosAgendados = obterHorariosAgendados(agendamentos);
 
-    expect(horariosAgendados).toEqual([
-      "09:30",
-      "10:00",
-      "10:30",
-      "11:00",
-      "11:30",
-      "16:00",
-      "16:30",
-    ]);
-  });
+  expect(horariosAgendados).toEqual([
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "16:00",
+    "16:30",
+  ]);
 });

@@ -2,7 +2,7 @@
 
 const {
   validarEObterHorarioObjeto,
-  obterHorariosEntreHoras,
+  obterHorariosEntreInicioETermino,
 } = require("./utils");
 
 module.exports = {
@@ -39,7 +39,7 @@ function obterHorariosAgendados(appointments) {
     const horarioTerminoNormalizado =
       normalizarHorarioTerminoAgendados(horarioTermino);
 
-    const horarios = obterHorariosEntreHoras(
+    const horarios = obterHorariosEntreInicioETermino(
       horarioInicioNormalizado,
       horarioTerminoNormalizado
     );

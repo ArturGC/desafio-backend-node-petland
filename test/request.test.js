@@ -8,7 +8,6 @@ const {
 describe("consultarProfissionais", () => {
   test("It should response the GET method", async () => {
     const profissionais = await consultarProfissionais();
-    console.log(profissionais);
     const profissional = profissionais[0];
 
     expect(Array.isArray(profissionais)).toBe(true);

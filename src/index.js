@@ -68,7 +68,6 @@ function gerarHorariosEntreHorarios(inicio, termino) {
     horarios.push(horarioString);
   }
 
-  console.log(horarios);
   return horarios;
 }
 
@@ -80,7 +79,6 @@ async function forecast() {
     const appointments = await obterHorariosEmpregadoPorId(employee.id);
 
     for (const appointment of appointments.appointments) {
-      console.log(appointment);
     }
   }
 }

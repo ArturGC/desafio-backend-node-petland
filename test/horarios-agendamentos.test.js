@@ -6,61 +6,61 @@ const {
   obterHorariosAgendamento,
 } = require("../src/utils/horarios-agendamentos");
 
-describe("normalizarHorarioInicioAgendamento: Deve arredondar um horário de início de agendamento para o horário seguinte mais próximo em que os minutos são 0 ou 30", () => {
+describe("normalizarHorarioInicioAgendamento: Deve normalizar um horário de início de agendamento para o horário seguinte mais próximo em que os minutos são 0 ou 30", () => {
   test("08:00 => 08:00", () => {
-    const horarioInicio = { hora: 8, minutos: 0 };
-    const inicio = normalizarHorarioInicioAgendamento(horarioInicio);
+    const horarioInicioObj = { hora: 8, minutos: 0 };
+    const inicio = normalizarHorarioInicioAgendamento(horarioInicioObj);
 
     expect(inicio).toEqual({ hora: 8, minutos: 0 });
   });
 
   test("09:30 => 09:30", () => {
-    const horarioInicio = { hora: 9, minutos: 30 };
-    const inicio = normalizarHorarioInicioAgendamento(horarioInicio);
+    const horarioInicioObj = { hora: 9, minutos: 30 };
+    const inicio = normalizarHorarioInicioAgendamento(horarioInicioObj);
 
     expect(inicio).toEqual({ hora: 9, minutos: 30 });
   });
 
   test("10:15 => 10:30", () => {
-    const horarioInicio = { hora: 10, minutos: 15 };
-    const inicio = normalizarHorarioInicioAgendamento(horarioInicio);
+    const horarioInicioObj = { hora: 10, minutos: 15 };
+    const inicio = normalizarHorarioInicioAgendamento(horarioInicioObj);
 
     expect(inicio).toEqual({ hora: 10, minutos: 30 });
   });
 
   test("11:45 => 12:00", () => {
-    const horarioInicio = { hora: 11, minutos: 45 };
-    const inicio = normalizarHorarioInicioAgendamento(horarioInicio);
+    const horarioInicioObj = { hora: 11, minutos: 45 };
+    const inicio = normalizarHorarioInicioAgendamento(horarioInicioObj);
 
     expect(inicio).toEqual({ hora: 12, minutos: 0 });
   });
 });
 
-describe("normalizarHorarioTerminoAgendamento: Deve arredondar um horário de término de agendamento para o horário anterior mais próximo em que os minutos são 0 ou 30", () => {
+describe("normalizarHorarioTerminoAgendamento: Deve normalizar um horário de término de agendamento para o horário anterior mais próximo em que os minutos são 0 ou 30", () => {
   test("08:00 => 08:00", () => {
-    const horarioInicio = { hora: 8, minutos: 0 };
-    const inicio = normalizarHorarioTerminoAgendamento(horarioInicio);
+    const horarioTerminoObj = { hora: 8, minutos: 0 };
+    const inicio = normalizarHorarioTerminoAgendamento(horarioTerminoObj);
 
     expect(inicio).toEqual({ hora: 8, minutos: 0 });
   });
 
   test("09:30 => 09:30", () => {
-    const horarioInicio = { hora: 9, minutos: 30 };
-    const inicio = normalizarHorarioTerminoAgendamento(horarioInicio);
+    const horarioTerminoObj = { hora: 9, minutos: 30 };
+    const inicio = normalizarHorarioTerminoAgendamento(horarioTerminoObj);
 
     expect(inicio).toEqual({ hora: 9, minutos: 30 });
   });
 
   test("10:15 => 10:00", () => {
-    const horarioInicio = { hora: 10, minutos: 15 };
-    const inicio = normalizarHorarioTerminoAgendamento(horarioInicio);
+    const horarioTerminoObj = { hora: 10, minutos: 15 };
+    const inicio = normalizarHorarioTerminoAgendamento(horarioTerminoObj);
 
     expect(inicio).toEqual({ hora: 10, minutos: 0 });
   });
 
   test("11:45 => 11:30", () => {
-    const horarioInicio = { hora: 11, minutos: 45 };
-    const inicio = normalizarHorarioTerminoAgendamento(horarioInicio);
+    const horarioTerminoObj = { hora: 11, minutos: 45 };
+    const inicio = normalizarHorarioTerminoAgendamento(horarioTerminoObj);
 
     expect(inicio).toEqual({ hora: 11, minutos: 30 });
   });

@@ -2,7 +2,7 @@
 
 const {
   validarEObterHorarioObjeto,
-  obterHorariosEntreHoras,
+  obterHorariosEntreInicioETermino,
 } = require("./utils");
 
 module.exports = {
@@ -11,24 +11,24 @@ module.exports = {
   obterHorariosAgendamento,
 };
 
-function normalizarHorarioInicioAgendamento(horarioObjeto) {
-  if (horarioObjeto.minutos > 0 && horarioObjeto.minutos < 30) {
-    return { hora: horarioObjeto.hora, minutos: 30 };
-  } else if (horarioObjeto.minutos > 30) {
-    return { hora: horarioObjeto.hora + 1, minutos: 0 };
+function normalizarHorarioInicioAgendamento(horarioInicioObj) {
+  if (horarioInicioObj.minutos > 0 && horarioInicioObj.minutos < 30) {
+    return { hora: horarioInicioObj.hora, minutos: 30 };
+  } else if (horarioInicioObj.minutos > 30) {
+    return { hora: horarioInicioObj.hora + 1, minutos: 0 };
   }
 
-  return horarioObjeto;
+  return horarioInicioObj;
 }
 
-function normalizarHorarioTerminoAgendamento(horarioObjeto) {
-  if (horarioObjeto.minutos > 30) {
-    return { hora: horarioObjeto.hora, minutos: 30 };
-  } else if (horarioObjeto.minutos > 0 && horarioObjeto.minutos < 30) {
-    return { hora: horarioObjeto.hora, minutos: 0 };
+function normalizarHorarioTerminoAgendamento(horarioTerminoObj) {
+  if (horarioTerminoObj.minutos > 30) {
+    return { hora: horarioTerminoObj.hora, minutos: 30 };
+  } else if (horarioTerminoObj.minutos > 0 && horarioTerminoObj.minutos < 30) {
+    return { hora: horarioTerminoObj.hora, minutos: 0 };
   }
 
-  return horarioObjeto;
+  return horarioTerminoObj;
 }
 
 function obterHorariosAgendamento(startsAt, finishesAt) {
@@ -40,7 +40,7 @@ function obterHorariosAgendamento(startsAt, finishesAt) {
   const horarioTerminoNormalizado =
     normalizarHorarioTerminoAgendamento(horarioTermino);
 
-  return obterHorariosEntreHoras(
+  return obterHorariosEntreInicioETermino(
     horarioInicioNormalizado,
     horarioTerminoNormalizado
   );

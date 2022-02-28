@@ -3,11 +3,11 @@
 module.exports = {
   normalizarHorarioTerminoAgendados,
   validarEObterHorarioObjeto,
-  obterHorariosEntreHoras,
+  obterHorariosEntreInicioETermino,
   normalizarHorarioInicioAgendados,
   obterHorariosAgendamento,
   obterHorariosAgendados,
-  obterHorariosDisponiveis,
+  filtrarHorariosDisponiveis,
   normalizarHorarioInicioAgendamento,
   normalizarHorarioTerminoAgendamento,
 };
@@ -22,7 +22,7 @@ function obterHorariosAgendados(profissional) {
     const horarioTerminoNormalizado =
       normalizarHorarioTerminoAgendados(horarioTermino);
 
-    const horarios = obterHorariosEntreHoras(
+    const horarios = obterHorariosEntreInicioETermino(
       horarioInicioNormalizado,
       horarioTerminoNormalizado
     );
