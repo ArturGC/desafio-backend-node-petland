@@ -9,7 +9,7 @@ const axios = require("axios");
 jest.mock("axios");
 
 describe("consultarProfissionais", () => {
-  test("It should response the GET method", async () => {
+  test("Deve lançar um erro quando não é possível consultar os profissionais", async () => {
     expect.assertions(1);
     axios.get.mockResolvedValue(undefined);
 
@@ -22,7 +22,7 @@ describe("consultarProfissionais", () => {
 });
 
 describe("consultarAgendamentosProfissional", () => {
-  test("It should response the GET method", async () => {
+  test("Deve lançar um erro quando não é possível consultar os agendamentos de um profissional", async () => {
     expect.assertions(1);
     axios.get.mockResolvedValue(undefined);
 

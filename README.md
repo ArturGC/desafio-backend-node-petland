@@ -31,6 +31,8 @@ availableTimes: ["08:00", "08:30", "09:00, "10:00", ...]
 
 ##### Pronto! Basta aguardar que vamos entrar em contato
 
-# Implementação
+---
 
-- Para facilitar a implementação foi considerado que toda consulta terá duração de multiplos de 30 minutos. Logo
+## Resultado Esperado
+
+![alt text](./resultado-esperado.png)

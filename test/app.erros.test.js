@@ -1,15 +1,19 @@
 "use strict";
 
 const request = require("supertest");
-const app = require("../src/app");
 const axios = require("axios");
+
+const app = require("../src/app");
 
 jest.mock("axios");
 
-describe("Test the root path", () => {
-  test("It should response the GET method", async () => {
+describe("Testa erros na requisição", () => {
+  test("Deve retornar uma resposta com código de erro 404 e a mensagem de erro", async () => {
+    axios.get.mockResolvedValue(undefined);
+
     const response = await request(app).get("/");
 
     expect(response.statusCode).toBe(404);
+    expect(response.body).toHaveProperty("message");
   });
 });

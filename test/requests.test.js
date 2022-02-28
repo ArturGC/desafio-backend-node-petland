@@ -6,7 +6,7 @@ const {
 } = require("../src/services/requests-api-externas");
 
 describe("consultarProfissionais", () => {
-  test("It should response the GET method", async () => {
+  test("Deve obter um array composto por objetos que representam um profisional", async () => {
     const profissionais = await consultarProfissionais();
     const profissional = profissionais[0];
 
@@ -19,7 +19,7 @@ describe("consultarProfissionais", () => {
 });
 
 describe("consultarAgendamentosProfissional", () => {
-  test("It should response the GET method", async () => {
+  test("Deve obter um array com os agendamentos de um profissional", async () => {
     const profissionalId = 1;
     const agendamentosProfissional = await consultarAgendamentosProfissional(
       profissionalId
