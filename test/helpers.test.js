@@ -1,19 +1,13 @@
 "use strict";
 
 const {
-  obterHorariosAgendamento,
-} = require("../src/utils/horarios-agendamentos");
-
-const { obterHorariosAgendados } = require("../src/utils/horarios-agendados");
-
-const {
   mesclarArraysHorariosDisponiveis,
   validarEObterHorarioObjeto,
   obterHorariosEntreInicioETermino,
   filtrarHorariosDisponiveis,
-} = require("../src/utils/utils");
+} = require("../src/services/helpers");
 
-describe("validarEObterHorarioObjeto: Deve validar um horário em string no formato hh:mm e retornar um objeto com os valores valores de horas e minutos", () => {
+describe("validarEObterHorarioObjeto: Deve validar um horário string no formato hh:mm e retornar um objeto com os valores de horas e minutos", () => {
   test("10:25 => { hora: 10, minuto: 25 }", () => {
     const objetoHorario = validarEObterHorarioObjeto("10:25");
 
@@ -32,7 +26,7 @@ describe("validarEObterHorarioObjeto: Deve validar um horário em string no form
   });
 });
 
-test("obterHorariosEntreInicioETermino: Deve gerar um array com horários em intervalos de 30 minutos", () => {
+test("obterHorariosEntreInicioETermino: Deve gerar um array com horários em intervalos de 30 minutos entre o horário de início e o horário de término", () => {
   const horarioInicioObj = { hora: 8, minutos: 0 };
   const horarioTerminoObj = { hora: 10, minutos: 0 };
   const horarios = obterHorariosEntreInicioETermino(
@@ -43,7 +37,7 @@ test("obterHorariosEntreInicioETermino: Deve gerar um array com horários em int
   expect(horarios).toEqual(["08:00", "08:30", "09:00", "09:30", "10:00"]);
 });
 
-test("filtrarHorariosDisponiveis: Deve filtrar um array com os horários disponíveis", () => {
+test("filtrarHorariosDisponiveis: Deve filtrar do array de horários possíveis os valores do array de horários agendados", () => {
   const horariosPossiveis = [
     "12:00",
     "12:30",
@@ -84,7 +78,7 @@ test("filtrarHorariosDisponiveis: Deve filtrar um array com os horários dispon�
   ]);
 });
 
-describe("mesclarArraysHorariosDisponiveis: Deve retornar um array com os horários disponíveis, ordenados por hora e sem repetição de horário a partir da mesclagem de array de horários disponíveis ", () => {
+describe("mesclarArraysHorariosDisponiveis: Deve gerar um único array de horários disponíveis a partir de vários arrays de horários disponíveis", () => {
   const horariosDisponiveis = mesclarArraysHorariosDisponiveis([
     ["08:30", "10:00", "15:30", "17:00"],
     ["10:30", "13:00", "18:00"],

@@ -2,7 +2,7 @@
 
 const express = require("express");
 
-const { obterHorariosDisponiveis } = require("./request");
+const { obterHorariosDisponiveis } = require("./services");
 
 const port = 3000;
 const app = express();
@@ -20,8 +20,4 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
-//Implementar timeout para responstar não obtidas
+app.listen(port, () => console.log(`Example app listening on port ${port}`));

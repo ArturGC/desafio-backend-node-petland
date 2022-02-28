@@ -3,7 +3,7 @@
 const {
   consultarAgendamentosProfissional,
   consultarProfissionais,
-} = require("../src/request");
+} = require("../src/services/requests-api-externas");
 
 describe("consultarProfissionais", () => {
   test("It should response the GET method", async () => {

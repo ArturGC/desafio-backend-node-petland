@@ -3,7 +3,7 @@
 const {
   validarEObterHorarioObjeto,
   obterHorariosEntreInicioETermino,
-} = require("./utils");
+} = require("./helpers");
 
 module.exports = {
   normalizarHorarioInicioAgendados,

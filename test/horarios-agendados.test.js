@@ -4,7 +4,7 @@ const {
   normalizarHorarioInicioAgendados,
   normalizarHorarioTerminoAgendados,
   obterHorariosAgendados,
-} = require("../src/utils/horarios-agendados");
+} = require("../src/services/horarios-agendados");
 
 describe("normalizarHorarioInicioAgendados: Deve arredondar um horário para o horário anterior mais próximo em que os valores de minutos seja 0 ou 30", () => {
   test("08:00 => 08:00", () => {
@@ -66,7 +66,7 @@ describe("normalizarHorarioTerminoAgendados: Deve arredondar um horário para o 
   });
 });
 
-describe("obterHorariosAgendados: Deve gerar um array com os horários de agendamento quando é fornecido as string de horário de início e horário de término", () => {
+describe("obterHorariosAgendados: Deve gerar um array com os horários de agendamento quando é fornecido as string de horário de início e horário de término de vários agendamentos", () => {
   const agendamentos = [
     { startsAt: "09:30", finishesAt: "10:30" },
     { startsAt: "11:00", finishesAt: "11:20" },
