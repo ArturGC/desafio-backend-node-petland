@@ -2,8 +2,10 @@
   "name": "desafio-backend-node-petland",
   "version": "1.0.0",
   "description": "O objetivo do exercício é verificar sua familiaridade com Nodejs, lógica e organização do código",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
+    "debug": "nodemon src/server.js",
+    "start": "node src/server.js",
     "test": "jest --coverage"
   },
   "repository": {
