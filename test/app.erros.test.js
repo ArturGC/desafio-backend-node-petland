@@ -13,7 +13,7 @@ describe("Testa erros na requisição", () => {
 
     const response = await request(app).get("/");
 
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(500);
     expect(response.body).toHaveProperty("message");
   });
 });

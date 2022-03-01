@@ -1,28 +1,28 @@
 "use strict";
 
+require("express-async-errors");
 const express = require("express");
-
 const { obterHorariosDisponiveis } = require("./services");
 
 const app = express();
 
 app.get("/", async (req, res) => {
-  try {
-    const availableTimes = await obterHorariosDisponiveis();
+  const availableTimes = await obterHorariosDisponiveis();
 
-    res.send(availableTimes);
-  } catch (error) {
-    res.status(404).send({
-      title: "404",
-      message: error.message,
-    });
-  }
+  res.send(availableTimes);
 });
 
 app.get("/*", (req, res) => {
   res.status(404).send({
     title: "404",
     message: "Página não encontrada.",
+  });
+});
+
+app.use((error, req, res, next) => {
+  res.status(500).send({
+    title: "500",
+    message: error.message,
   });
 });
 
